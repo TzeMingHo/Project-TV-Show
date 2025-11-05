@@ -3,10 +3,18 @@ function setup() {
   const state = {
     episodes: [],
     searchTerm: "",
+    endpoint: "https://api.tvmaze.com/shows/82/episodes",
+    fetchedTimes: 0,
   };
   return {
-    fetchAllEpisodes() {
-      state.episodes = getAllEpisodes();
+    async fetchAllEpisodes() {
+      const response = await fetch(state.endpoint);
+      if (response) {
+        state.episodes = await response.json();
+        state.fetchedTimes += 1;
+        console.log(state.fetchedTimes);
+        this.render();
+      }
     },
     updateSearchTerm() {
       const searchTermInput = document.getElementById("search-input");
@@ -44,7 +52,6 @@ const gameOfThrones = setup();
 
 window.onload = () => {
   gameOfThrones.fetchAllEpisodes();
-  gameOfThrones.render();
 
   const searchTermInput = document.getElementById("search-input");
   searchTermInput.addEventListener("keyup", () => {

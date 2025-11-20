@@ -1,9 +1,11 @@
 var allEpisodesList = [];
+var allShowsList = [];
 var currentSearchTerm = "";
 var endPoint = "https://api.tvmaze.com/shows/82/episodes";
+var allTheShowsEndpoint = "https://api.tvmaze.com/shows";
 
 async function setup() {
-  allEpisodesList = await fetchingShow();
+  allEpisodesList = await fetchingEpisodes();
   makePageForEpisodes(allEpisodesList);
   populateSeasonSelector(allEpisodesList);
   updateMatchCount(allEpisodesList.length, allEpisodesList.length);
@@ -16,7 +18,7 @@ async function setup() {
     .addEventListener("change", handleSeasonSelector);
 }
 
-async function fetchingShow() {
+async function fetchingEpisodes() {
   const response = await fetch(endPoint);
   if (response.ok) {
     const episodes = await response.json();
@@ -25,6 +27,8 @@ async function fetchingShow() {
     throw new Error(`Response status: ${response.status}`);
   }
 }
+
+async function fetchingShows() {}
 
 function handleSearchTermInput(e) {
   currentSearchTerm = e.target.value.trim().toLowerCase();
@@ -57,6 +61,8 @@ function filterEpisodes(episodesList, searchTerm) {
       episode.summary.toLowerCase().includes(searchTerm)
   );
 }
+
+function populateShowSelector() {}
 
 function populateSeasonSelector(episodes) {
   const selector = document.getElementById("season-selector");

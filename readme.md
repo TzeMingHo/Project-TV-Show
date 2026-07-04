@@ -1,70 +1,45 @@
-# TV Show Project
+# 📺 TV Show Project
 
-One of the most powerful things a software engineer can do is take some data and make it easy for people to understand.
+A collaborative, responsive data explorer built to fetch, parse, and display comprehensive television datasets from a third-party API. The application features an optimized client-side caching layer and a synchronized search system to deliver a low-latency user experience.
 
-The aim of this project is to take some data someone else has (and exposes over an API), and display it to users. The data we're using for this project is about episodes of TV shows.
+*   **Live Demo:** [View Live Application](https://cyf-tzemingho-tv.netlify.app/)
+*   **Collaborators:** Built as a two-person team project.
 
-This project will take you multiple weeks to complete. As always, we will break down the project into levels we can deliver incrementally. You must finish each milestone before you start working on the next one (but it's ok to know what the future levels are going to be - it may help you design things). Your goal is to complete all of the levels up to and including level 500 during the Data Flows module.
+---
 
-## Live demo: https://cyf-tzemingho-tv.netlify.app/
+## 💡 Project Background & Motivation
 
-## Data
+The primary motivation behind this project was to master asynchronous JavaScript—specifically learning how to fetch, handle, and dynamically render data from an external, live API. 
 
-The data we're going to use comes from a website called TVmaze. For the first few levels, you can call a function `getAllEpisodes()` and you will get an array of objects, one per episode of a TV show. Later on, you will use `fetch` to get the data dynamically from the API. Here is an example object for one episode:
+### The Problem It Solves
+When building data-heavy search applications, fetching data from a third-party API every single time a user types a query or updates a filter creates massive network overhead. It slows down the user interface and risks hitting API rate limits. We built this project to solve that inefficiency, ensuring the application remains fast and responsive without spamming redundant network requests.
 
-```js
-{
-    id: 4952,
-    url: "http://www.tvmaze.com/episodes/4952/game-of-thrones-1x01-winter-is-coming",
-    name: "Winter is Coming",
-    season: 1,
-    number: 1,
-    airdate: "2011-04-17",
-    airtime: "21:00",
-    airstamp: "2011-04-18T01:00:00+00:00",
-    runtime: 60,
-    image: {
-        medium: "http://static.tvmaze.com/uploads/images/medium_landscape/1/2668.jpg",
-        original: "http://static.tvmaze.com/uploads/images/original_untouched/1/2668.jpg"
-    },
-    summary:
-        "<p>Lord Eddard Stark, ruler of the North, is summoned to court by his old friend, King Robert Baratheon, to serve as the King's Hand. Eddard reluctantly agrees after learning of a possible threat to the King's life. Eddard's bastard son Jon Snow must make a painful decision about his own future, while in the distant east Viserys Targaryen plots to reclaim his father's throne, usurped by Robert, by selling his sister in marriage.</p>",
-    _links: {
-        self: {
-            href: "http://api.tvmaze.com/episodes/4952"
-        }
-    }
-}
-```
+---
 
-## Rules
+## 🛠️ Tech Stack & Architecture
 
-### Your website must be accessible and use semantic HTML
+*   **Frontend:** JavaScript (ES6+), Asynchronous Fetch API, Semantic HTML5, CSS3
+*   **Data Layout:** Dynamic DOM manipulation with synchronized state tracking
+*   **Performance Optimization:** Custom client-side caching object layer
 
-As always, your application must score 100 for Accessibility on Lighthouse.
+---
 
-### Don't change `getAllEpisodes()`
+## 🚀 Key Features & Technical Highlights
 
-Because we're just using this `getAllEpisodes()` function as a placeholder until we use `fetch`, and we can't change what data will be returned to us from the `fetch`, you shouldn't change the implementation of `getAllEpisodes()`.
+*   **Client-Side Caching Layer:** Implemented a lightweight caching system that stores previously fetched API data. If a user returns to a television show dataset they have already viewed, the app serves it instantly from local memory instead of triggering a new network request.
+*   **Synchronized State Management:** Designed a synchronized state engine that processes dynamic user queries across massive datasets, ensuring smooth, low-latency live filtering.
+*   **Responsive UI:** Engineered a modern, semantic grid layout that scales fluidly across desktop, tablet, and mobile displays.
 
-### Use tech that we've learnt
+---
 
-You should use the DOM-manipulation functions you've been learning about on the course - the point of this project is to practice.
+## 🧠 What I Learned & Engineering Challenges
 
-You should not use React, Vue, JQuery, or any other libraries or frameworks for this project. You can rebuild it in React later if you want!
+### 1. The Mechanics of Caching & Efficiency
+Implementing a cache layer for the first time was an excellent exercise in understanding data flow and performance optimization. It completely changed how I think about browser resources and taught me how to structure asynchronous functions to evaluate existing local data before executing a standard network request.
 
-### Functionality before style
+### 2. Navigating Different Coding Styles
+The hardest—and ultimately most valuable—part of this project wasn't the technical architecture, but the collaboration. I was randomly paired with a teammate who had a fundamentally different writing and structural style than my own. 
 
-Your goal of this project is to achieve the levels, all of which are about functionality. When you have completed level 500, you can spend some time making it look beautiful. But focus on the functionality first.
+Because the project required us to take turns building upon the same codebase, we had to establish a highly structured review process. We learned how to carefully read and review each other's code, talk through our stylistic differences, and come to clear agreements before merging anything. This experience taught me how to adapt my style for the sake of team cohesion and gave me an immense appreciation for clean Git collaboration.
 
-Remember: it's important that software works and that people can use it.
-
-## Get started
-
-Each level has a .md file in the [`levels`](./levels) folder. Start with level 0, then complete level 100.
-
-After that, you're going to swap codebases with someone else. You should complete level 200 in their repository, not your own. Every level, you'll swap back - so you'll do level 300 in your own codebase, level 400 in theirs, etc.
-
-You are allowed to change anything in your partner's code to make it easier to understand or build on, but they must understand and accept your changes.
-
-Remember, finish each level before you move on to the next. Reach out for help when you're stuck.
+---
